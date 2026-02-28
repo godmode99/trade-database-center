@@ -8,6 +8,16 @@ create schema if not exists raw;
 create schema if not exists features;
 create schema if not exists normalized;
 
+create or replace function ops.set_updated_at_utc()
+returns trigger
+language plpgsql
+as $$
+begin
+  new.updated_at_utc = now();
+  return new;
+end;
+$$;
+
 create table if not exists ops.pipeline_runs (
   run_id text primary key,
   pipeline_name text not null,
@@ -53,9 +63,11 @@ create table if not exists raw.calendar_events (
   solo_url text,
   payload jsonb not null default '{}'::jsonb,
   ingested_at_utc timestamptz not null default now(),
-  updated_at_utc timestamptz not null default now(),
-  unique (source, event_id, event_time_utc)
+  updated_at_utc timestamptz not null default now()
 );
+
+create unique index if not exists uq_calendar_events_natural_key
+  on raw.calendar_events (source, coalesce(event_id, event_name), event_time_utc);
 
 create index if not exists idx_calendar_events_ui
   on raw.calendar_events (event_time_utc desc, currency, impact);
@@ -123,8 +135,17 @@ create table if not exists raw.cme_quotes (
   payload jsonb not null default '{}'::jsonb,
   ingested_at_utc timestamptz not null default now(),
   updated_at_utc timestamptz not null default now(),
-  unique (source, frequency, code, expiry_date, snapshot_time_utc)
+  check (high_value is null or low_value is null or high_value >= low_value)
 );
+
+create unique index if not exists uq_cme_quotes_natural_key
+  on raw.cme_quotes (
+    source,
+    frequency,
+    code,
+    coalesce(expiry_date, '0001-01-01'::date),
+    snapshot_time_utc
+  );
 
 create index if not exists idx_cme_quotes_ui
   on raw.cme_quotes (frequency, snapshot_time_utc desc, code);
@@ -139,14 +160,23 @@ create table if not exists raw.cme_probabilities (
   symbol text,
   contract_month text,
   rate_bin text,
-  probability numeric(8,5),
-  current_probability numeric(8,5),
+  probability numeric(8,5) check (probability is null or (probability >= 0 and probability <= 100)),
+  current_probability numeric(8,5) check (current_probability is null or (current_probability >= 0 and current_probability <= 100)),
   diff_probability numeric(8,5),
   payload jsonb not null default '{}'::jsonb,
   ingested_at_utc timestamptz not null default now(),
-  updated_at_utc timestamptz not null default now(),
-  unique (source, underlying, asof_time_utc, symbol, contract_month, rate_bin)
+  updated_at_utc timestamptz not null default now()
 );
+
+create unique index if not exists uq_cme_probabilities_natural_key
+  on raw.cme_probabilities (
+    source,
+    underlying,
+    asof_time_utc,
+    coalesce(symbol, ''),
+    coalesce(contract_month, ''),
+    coalesce(rate_bin, '')
+  );
 
 create index if not exists idx_cme_prob_ui
   on raw.cme_probabilities (underlying, asof_time_utc desc, contract_month);
@@ -206,12 +236,54 @@ create table if not exists features.calendar_surprise (
   surprise_zscore numeric,
   payload jsonb not null default '{}'::jsonb,
   ingested_at_utc timestamptz not null default now(),
-  updated_at_utc timestamptz not null default now(),
-  unique (source, event_id, event_time_utc)
+  updated_at_utc timestamptz not null default now()
 );
+
+create unique index if not exists uq_calendar_surprise_natural_key
+  on features.calendar_surprise (source, coalesce(event_id, event_name), event_time_utc);
 
 create index if not exists idx_calendar_surprise_ui
   on features.calendar_surprise (event_time_utc desc, currency, impact);
+
+drop trigger if exists trg_set_updated_at_pipeline_runs on ops.pipeline_runs;
+create trigger trg_set_updated_at_pipeline_runs
+before update on ops.pipeline_runs
+for each row execute function ops.set_updated_at_utc();
+
+drop trigger if exists trg_set_updated_at_calendar_events on raw.calendar_events;
+create trigger trg_set_updated_at_calendar_events
+before update on raw.calendar_events
+for each row execute function ops.set_updated_at_utc();
+
+drop trigger if exists trg_set_updated_at_fred_observations on raw.fred_observations;
+create trigger trg_set_updated_at_fred_observations
+before update on raw.fred_observations
+for each row execute function ops.set_updated_at_utc();
+
+drop trigger if exists trg_set_updated_at_mt5_ohlcv on raw.mt5_ohlcv;
+create trigger trg_set_updated_at_mt5_ohlcv
+before update on raw.mt5_ohlcv
+for each row execute function ops.set_updated_at_utc();
+
+drop trigger if exists trg_set_updated_at_cme_quotes on raw.cme_quotes;
+create trigger trg_set_updated_at_cme_quotes
+before update on raw.cme_quotes
+for each row execute function ops.set_updated_at_utc();
+
+drop trigger if exists trg_set_updated_at_cme_probabilities on raw.cme_probabilities;
+create trigger trg_set_updated_at_cme_probabilities
+before update on raw.cme_probabilities
+for each row execute function ops.set_updated_at_utc();
+
+drop trigger if exists trg_set_updated_at_mt5_price_features on features.mt5_price_features;
+create trigger trg_set_updated_at_mt5_price_features
+before update on features.mt5_price_features
+for each row execute function ops.set_updated_at_utc();
+
+drop trigger if exists trg_set_updated_at_calendar_surprise on features.calendar_surprise;
+create trigger trg_set_updated_at_calendar_surprise
+before update on features.calendar_surprise
+for each row execute function ops.set_updated_at_utc();
 
 create or replace view normalized.calendar_events_latest as
 select distinct on (coalesce(event_id, event_name), event_time_utc)
