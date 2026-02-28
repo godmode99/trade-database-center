@@ -32,6 +32,41 @@ def load_config(path: str) -> dict[str, Any]:
     return data
 
 
+def load_env_file(path: Path) -> None:
+    if not path.exists() or not path.is_file():
+        return
+
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
+def hydrate_env_from_common_files(config_path: Path) -> None:
+    script_dir = Path(__file__).resolve().parent
+    candidates = [
+        Path.cwd() / ".env",
+        Path.cwd() / ".env.local",
+        config_path.parent / ".env",
+        config_path.parent / ".env.local",
+        script_dir / ".env",
+        script_dir / ".env.local",
+    ]
+    visited: set[Path] = set()
+    for candidate in candidates:
+        resolved = candidate.resolve()
+        if resolved in visited:
+            continue
+        visited.add(resolved)
+        load_env_file(resolved)
+
+
 def now_utc_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -227,6 +262,8 @@ def run(config_path: str, dry_run: bool) -> None:
     if not cfg_path.is_absolute() and not cfg_path.exists():
         cfg_path = Path(__file__).resolve().parent / cfg_path
 
+    hydrate_env_from_common_files(cfg_path)
+
     cfg = load_config(str(cfg_path))
     source_cfg = cfg["source"]
     db_cfg = cfg["database"]
@@ -248,8 +285,20 @@ def run(config_path: str, dry_run: bool) -> None:
         print("Dry run mode: skip database write")
         return
 
-    base_url = os.getenv(db_cfg.get("url_env", "SUPABASE_URL"), db_cfg.get("url"))
-    api_key = os.getenv(db_cfg.get("service_key_env", "SUPABASE_SERVICE_ROLE_KEY"), db_cfg.get("service_role_key"))
+    base_url = (
+        os.getenv(db_cfg.get("url_env", "SUPABASE_URL"))
+        or os.getenv("SUPABASE_URL")
+        or os.getenv("NEXT_PUBLIC_SUPABASE_URL")
+        or db_cfg.get("url")
+    )
+    api_key = (
+        os.getenv(db_cfg.get("service_key_env", "SUPABASE_SERVICE_ROLE_KEY"))
+        or os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+        or os.getenv("SUPABASE_SECRET_KEY")
+        or os.getenv("SUPABASE_ANON_KEY")
+        or os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+        or db_cfg.get("service_role_key")
+    )
     if not base_url or not api_key:
         raise ValueError("Missing Supabase URL/API key in env or config")
 
