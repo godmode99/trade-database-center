@@ -15,21 +15,58 @@
 
 - `god_project/neon/migrations/202602280001_schema_v1.sql`
 
-## 2) เตรียม environment
+## 2) เตรียม environment (แบบทีละขั้น)
 
-กำหนดตัวแปรอย่างน้อย:
+> สรุปสั้น: ถ้าจะ "รัน migration SQL" ต้องมี `NEON_URL` ก็พอ
+> แต่ถ้าจะ "รัน pipeline calendar" ให้ตั้ง `SUPABASE_URL` และ `SUPABASE_SERVICE_ROLE_KEY` เพิ่มด้วย (เพราะโค้ด pipeline ปัจจุบันยังอ่านชื่อตัวแปรชุดนี้เป็นหลัก)
 
-- `NEON_URL` : Postgres connection string
-- `NEON_SERVICE_ROLE_KEY` : key สำหรับงานที่ต้องเขียนข้อมูลผ่าน REST/งาน pipeline บางตัว
+### 2.1 สิ่งที่ต้องเตรียมก่อน
 
-> หมายเหตุ: งาน SQL migration ผ่าน `psql` ใช้ `NEON_URL` เป็นหลัก
+1. มี Neon project ที่สร้างฐานข้อมูลไว้แล้ว
+2. มี connection string แบบ Postgres (ได้จากหน้า Dashboard ของ Neon)
+3. มี service role key สำหรับ REST write (กรณีรัน pipeline ที่เขียน DB)
 
-ตัวอย่าง (bash):
+### 2.2 ตัวแปร env ที่ใช้งานจริง
+
+- `NEON_URL` : ใช้กับคำสั่ง `psql`/migration โดยตรง
+- `SUPABASE_URL` : base URL ของ REST endpoint (โค้ด calendar pipeline ใช้ชื่อนี้)
+- `SUPABASE_SERVICE_ROLE_KEY` : key สำหรับเขียนข้อมูลผ่าน REST
+
+> ทำไมเป็น `SUPABASE_*`?
+> เพราะ pipeline ที่ `god_project/fetch/calendar/main.py` รองรับชื่อ env กลุ่มนี้เป็นหลัก (รวม fallback อื่น) แม้ระบบฐานข้อมูลที่ใช้จริงคือ Neon
+
+### 2.3 แนะนำวิธีตั้งค่าแบบง่ายสุด (Bash)
 
 ```bash
+# 1) SQL migration
 export NEON_URL="postgresql://<user>:<password>@<host>/<db>?sslmode=require"
-export NEON_SERVICE_ROLE_KEY="<your_service_role_key>"
+
+# 2) REST สำหรับ pipeline
+export SUPABASE_URL="https://<project-ref>.neon.tech"
+export SUPABASE_SERVICE_ROLE_KEY="<your_service_role_key>"
 ```
+
+### 2.4 ทางเลือก: ใส่ในไฟล์ env เพื่อไม่ต้อง export ทุกครั้ง
+
+สร้างไฟล์ `god_project/fetch/supabase.env`:
+
+```env
+SUPABASE_URL=https://<project-ref>.neon.tech
+SUPABASE_SERVICE_ROLE_KEY=<your_service_role_key>
+```
+
+จากนั้นรัน pipeline ได้เลย (ตัวสคริปต์จะพยายามโหลด env จากไฟล์นี้อัตโนมัติ)
+
+### 2.5 เช็กว่าตั้ง env ถูกแล้ว
+
+```bash
+# ต้องเห็นค่าไม่ว่าง
+echo "$NEON_URL"
+echo "$SUPABASE_URL"
+echo "$SUPABASE_SERVICE_ROLE_KEY" | wc -c
+```
+
+ถ้า `wc -c` ได้ค่ามากกว่า `1` แปลว่ามีค่า key แล้ว
 
 ## 3) วิธีรัน migration
 
