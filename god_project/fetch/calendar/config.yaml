@@ -1,21 +1,18 @@
 {
-  "pipeline": {
-    "run_mode": "manual",
-    "trigger_ref": "local-dev",
-    "batch_size": 500
-  },
-  "source": {
-    "name": "forexfactory_week",
-    "url": "https://nfs.faireconomy.media/ff_calendar_thisweek.json",
-    "method": "GET",
-    "headers": {
-      "User-Agent": "trade-database-center/1.0"
-    }
-  },
-  "database": {
-    "url_env": "SUPABASE_URL",
-    "service_key_env": "SUPABASE_SERVICE_ROLE_KEY",
-    "url": "",
-    "service_role_key": ""
-  }
+  "pipeline":
+    { "run_mode": "manual", "trigger_ref": "local-dev", "batch_size": 500 },
+  "source":
+    {
+      "name": "forexfactory_week",
+      "url": "https://nfs.faireconomy.media/ff_calendar_thisweek.json",
+      "method": "GET",
+      "headers": { "User-Agent": "trade-database-center/1.0" },
+    },
+  "database":
+    {
+      "url_env": "SUPABASE_URL",
+      "service_key_env": "SUPABASE_SERVICE_ROLE_KEY",
+      "url": "",
+      "service_role_key": "",
+    },
 }
