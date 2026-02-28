@@ -1,0 +1,12 @@
+{
+  "fetched_at_utc": "2026-02-17T14:56:18+00:00",
+  "cwd": "C:\\Users\\iidogpon\\Documents\\GitHub\\eurusd-swing-bias-bot",
+  "url": "https://www.forexfactory.com/calendar?",
+  "final_url": "https://www.forexfactory.com/calendar?",
+  "page_title": "Calendar | Forex Factory",
+  "html_saved_to": "C:\\Users\\iidogpon\\Documents\\GitHub\\eurusd-swing-bias-bot\\python\\Data\\raw_data\\calendar\\calendar_document.html",
+  "screenshot_saved_to": "C:\\Users\\iidogpon\\Documents\\GitHub\\eurusd-swing-bias-bot\\python\\Data\\raw_data\\calendar\\document_debug.png",
+  "storage_state_path": "C:\\Users\\iidogpon\\Documents\\GitHub\\eurusd-swing-bias-bot\\ff_storage.json",
+  "playwright_user_agent": "",
+  "note": "Captured top-level document HTML for ForexFactory calendar page (network snapshot)."
+}

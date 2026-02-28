@@ -1,0 +1,262 @@
+{
+  "source_file": "20260217_224144__sofrwatch_cmegroup-tools.quikstrike.net_20260217_224144__a43d7fb14cda.txt",
+  "parsed_at_utc": "2026-02-17T15:41:44.431496+00:00",
+  "tables": {
+    "SR3": [
+      {
+        "symbol": "SR3X5",
+        "contract_month": "Nov-25",
+        "prediction": 96.235,
+        "current": 96.235,
+        "diff": 0.0
+      },
+      {
+        "symbol": "SR3Z5",
+        "contract_month": "Dec-25",
+        "prediction": 96.357,
+        "current": 96.31,
+        "diff": 4.7
+      },
+      {
+        "symbol": "SR3F6",
+        "contract_month": "Jan-26",
+        "prediction": 96.42,
+        "current": 96.3325,
+        "diff": 8.75
+      },
+      {
+        "symbol": "SR3G6",
+        "contract_month": "Feb-26",
+        "prediction": 96.461,
+        "current": 96.345,
+        "diff": 11.6
+      },
+      {
+        "symbol": "SR3H6",
+        "contract_month": "Mar-26",
+        "prediction": 96.461,
+        "current": 96.365,
+        "diff": 9.6
+      },
+      {
+        "symbol": "SR3J6",
+        "contract_month": "Apr-26",
+        "prediction": 96.536,
+        "current": 96.42,
+        "diff": 11.6
+      },
+      {
+        "symbol": "SR3K6",
+        "contract_month": "May-26",
+        "prediction": 96.633,
+        "current": 96.495,
+        "diff": 13.8
+      },
+      {
+        "symbol": "SR3M6",
+        "contract_month": "Jun-26",
+        "prediction": 96.711,
+        "current": 96.57,
+        "diff": 14.1
+      },
+      {
+        "symbol": "SR3N6",
+        "contract_month": "Jul-26",
+        "prediction": 96.8,
+        "current": 96.655,
+        "diff": 14.5
+      },
+      {
+        "symbol": "SR3Q6",
+        "contract_month": "Aug-26",
+        "prediction": 96.885,
+        "current": 96.74,
+        "diff": 14.5
+      },
+      {
+        "symbol": "SR3U6",
+        "contract_month": "Sep-26",
+        "prediction": 96.963,
+        "current": 96.805,
+        "diff": 15.8
+      },
+      {
+        "symbol": "SR3Z6",
+        "contract_month": "Dec-26",
+        "prediction": 96.965,
+        "current": 96.93,
+        "diff": 3.5
+      },
+      {
+        "symbol": "SR3H7",
+        "contract_month": "Mar-27",
+        "prediction": 97.214,
+        "current": 96.97,
+        "diff": 24.4
+      },
+      {
+        "symbol": "SR3M7",
+        "contract_month": "Jun-27",
+        "prediction": 97.217,
+        "current": 96.97,
+        "diff": 24.7
+      }
+    ],
+    "SR1": [
+      {
+        "symbol": "SR1G6",
+        "contract_month": "Feb-26",
+        "prediction": 96.41,
+        "current": 96.3425,
+        "diff": 6.43
+      },
+      {
+        "symbol": "SR1H6",
+        "contract_month": "Mar-26",
+        "prediction": 96.48,
+        "current": 96.345,
+        "diff": 13.17
+      },
+      {
+        "symbol": "SR1J6",
+        "contract_month": "Apr-26",
+        "prediction": 96.48,
+        "current": 96.355,
+        "diff": 12.17
+      },
+      {
+        "symbol": "SR1K6",
+        "contract_month": "May-26",
+        "prediction": 96.48,
+        "current": 96.4,
+        "diff": 7.67
+      },
+      {
+        "symbol": "SR1M6",
+        "contract_month": "Jun-26",
+        "prediction": 96.58,
+        "current": 96.455,
+        "diff": 12.39
+      },
+      {
+        "symbol": "SR1N6",
+        "contract_month": "Jul-26",
+        "prediction": 96.73,
+        "current": 96.54,
+        "diff": 18.67
+      },
+      {
+        "symbol": "SR1Q6",
+        "contract_month": "Aug-26",
+        "prediction": 96.73,
+        "current": 96.63,
+        "diff": 9.67
+      },
+      {
+        "symbol": "SR1U6",
+        "contract_month": "Sep-26",
+        "prediction": 96.85,
+        "current": 96.69,
+        "diff": 15.57
+      },
+      {
+        "symbol": "SR1V6",
+        "contract_month": "Oct-26",
+        "prediction": 96.98,
+        "current": 96.775,
+        "diff": 20.17
+      },
+      {
+        "symbol": "SR1X6",
+        "contract_month": "Nov-26",
+        "prediction": 96.98,
+        "current": 96.845,
+        "diff": 13.17
+      },
+      {
+        "symbol": "SR1Z6",
+        "contract_month": "Dec-26",
+        "prediction": 96.98,
+        "current": 96.895,
+        "diff": 8.17
+      },
+      {
+        "symbol": "SR1F7",
+        "contract_month": "Jan-27",
+        "prediction": 96.98,
+        "current": 96.925,
+        "diff": 5.17
+      },
+      {
+        "symbol": "SR1G7",
+        "contract_month": "Feb-27",
+        "prediction": 96.98,
+        "current": 96.965,
+        "diff": 1.17
+      },
+      {
+        "symbol": "SR1H7",
+        "contract_month": "Mar-27",
+        "prediction": 97.09,
+        "current": 96.985,
+        "diff": 10.04
+      },
+      {
+        "symbol": "SR1J7",
+        "contract_month": "Apr-27",
+        "prediction": 97.23,
+        "current": 97.005,
+        "diff": 22.17
+      },
+      {
+        "symbol": "SR1K7",
+        "contract_month": "May-27",
+        "prediction": 97.23,
+        "current": 96.995,
+        "diff": 23.17
+      },
+      {
+        "symbol": "SR1M7",
+        "contract_month": "Jun-27",
+        "prediction": 97.23,
+        "current": 96.985,
+        "diff": 24.17
+      },
+      {
+        "symbol": "SR1N7",
+        "contract_month": "Jul-27",
+        "prediction": 97.23,
+        "current": 96.985,
+        "diff": 24.17
+      },
+      {
+        "symbol": "SR1Q7",
+        "contract_month": "Aug-27",
+        "prediction": 97.23,
+        "current": 96.97,
+        "diff": 25.67
+      },
+      {
+        "symbol": "SR1U7",
+        "contract_month": "Sep-27",
+        "prediction": 97.23,
+        "current": 96.965,
+        "diff": 26.17
+      },
+      {
+        "symbol": "SR1V7",
+        "contract_month": "Oct-27",
+        "prediction": 97.2,
+        "current": 96.96,
+        "diff": 24.17
+      },
+      {
+        "symbol": "SR1X7",
+        "contract_month": "Nov-27",
+        "prediction": 96.98,
+        "current": 96.955,
+        "diff": 2.17
+      }
+    ]
+  }
+}

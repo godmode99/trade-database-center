@@ -1,0 +1,255 @@
+{
+  "source_file": "20260131_132950__sofrwatch_cmegroup-tools.quikstrike.net_20260131_132950__a7a5f09539ac.txt",
+  "parsed_at_utc": "2026-01-31T06:29:50.706020+00:00",
+  "tables": {
+    "SR3": [
+      {
+        "symbol": "SR3X5",
+        "contract_month": "Nov-25",
+        "prediction": 96.261,
+        "current": 96.2325,
+        "diff": 2.85
+      },
+      {
+        "symbol": "SR3Z5",
+        "contract_month": "Dec-25",
+        "prediction": 96.382,
+        "current": 96.31,
+        "diff": 7.2
+      },
+      {
+        "symbol": "SR3F6",
+        "contract_month": "Jan-26",
+        "prediction": 96.445,
+        "current": 96.3325,
+        "diff": 11.25
+      },
+      {
+        "symbol": "SR3G6",
+        "contract_month": "Feb-26",
+        "prediction": 96.456,
+        "current": 96.35,
+        "diff": 10.6
+      },
+      {
+        "symbol": "SR3H6",
+        "contract_month": "Mar-26",
+        "prediction": 96.456,
+        "current": 96.385,
+        "diff": 7.1
+      },
+      {
+        "symbol": "SR3J6",
+        "contract_month": "Apr-26",
+        "prediction": 96.531,
+        "current": 96.435,
+        "diff": 9.6
+      },
+      {
+        "symbol": "SR3K6",
+        "contract_month": "May-26",
+        "prediction": 96.628,
+        "current": 96.505,
+        "diff": 12.3
+      },
+      {
+        "symbol": "SR3M6",
+        "contract_month": "Jun-26",
+        "prediction": 96.706,
+        "current": 96.575,
+        "diff": 13.1
+      },
+      {
+        "symbol": "SR3N6",
+        "contract_month": "Jul-26",
+        "prediction": 96.707,
+        "current": 96.635,
+        "diff": 7.2
+      },
+      {
+        "symbol": "SR3U6",
+        "contract_month": "Sep-26",
+        "prediction": 96.841,
+        "current": 96.755,
+        "diff": 8.6
+      },
+      {
+        "symbol": "SR3Z6",
+        "contract_month": "Dec-26",
+        "prediction": 96.96,
+        "current": 96.825,
+        "diff": 13.5
+      },
+      {
+        "symbol": "SR3H7",
+        "contract_month": "Mar-27",
+        "prediction": 96.96,
+        "current": 96.82,
+        "diff": 14.0
+      },
+      {
+        "symbol": "SR3M7",
+        "contract_month": "Jun-27",
+        "prediction": 96.96,
+        "current": 96.79,
+        "diff": 17.0
+      }
+    ],
+    "SR1": [
+      {
+        "symbol": "SR1G6",
+        "contract_month": "Feb-26",
+        "prediction": 96.47,
+        "current": 96.335,
+        "diff": 13.67
+      },
+      {
+        "symbol": "SR1H6",
+        "contract_month": "Mar-26",
+        "prediction": 96.47,
+        "current": 96.35,
+        "diff": 12.17
+      },
+      {
+        "symbol": "SR1J6",
+        "contract_month": "Apr-26",
+        "prediction": 96.47,
+        "current": 96.375,
+        "diff": 9.67
+      },
+      {
+        "symbol": "SR1K6",
+        "contract_month": "May-26",
+        "prediction": 96.47,
+        "current": 96.42,
+        "diff": 5.17
+      },
+      {
+        "symbol": "SR1M6",
+        "contract_month": "Jun-26",
+        "prediction": 96.57,
+        "current": 96.475,
+        "diff": 9.89
+      },
+      {
+        "symbol": "SR1N6",
+        "contract_month": "Jul-26",
+        "prediction": 96.72,
+        "current": 96.55,
+        "diff": 17.17
+      },
+      {
+        "symbol": "SR1Q6",
+        "contract_month": "Aug-26",
+        "prediction": 96.72,
+        "current": 96.63,
+        "diff": 9.17
+      },
+      {
+        "symbol": "SR1U6",
+        "contract_month": "Sep-26",
+        "prediction": 96.72,
+        "current": 96.675,
+        "diff": 4.67
+      },
+      {
+        "symbol": "SR1V6",
+        "contract_month": "Oct-26",
+        "prediction": 96.75,
+        "current": 96.74,
+        "diff": 0.55
+      },
+      {
+        "symbol": "SR1X6",
+        "contract_month": "Nov-26",
+        "prediction": 96.97,
+        "current": 96.795,
+        "diff": 17.67
+      },
+      {
+        "symbol": "SR1Z6",
+        "contract_month": "Dec-26",
+        "prediction": 96.97,
+        "current": 96.82,
+        "diff": 15.17
+      },
+      {
+        "symbol": "SR1F7",
+        "contract_month": "Jan-27",
+        "prediction": 96.97,
+        "current": 96.835,
+        "diff": 13.67
+      },
+      {
+        "symbol": "SR1G7",
+        "contract_month": "Feb-27",
+        "prediction": 96.97,
+        "current": 96.85,
+        "diff": 12.17
+      },
+      {
+        "symbol": "SR1H7",
+        "contract_month": "Mar-27",
+        "prediction": 96.97,
+        "current": 96.845,
+        "diff": 12.67
+      },
+      {
+        "symbol": "SR1J7",
+        "contract_month": "Apr-27",
+        "prediction": 96.97,
+        "current": 96.87,
+        "diff": 10.17
+      },
+      {
+        "symbol": "SR1K7",
+        "contract_month": "May-27",
+        "prediction": 96.97,
+        "current": 96.855,
+        "diff": 11.67
+      },
+      {
+        "symbol": "SR1M7",
+        "contract_month": "Jun-27",
+        "prediction": 96.97,
+        "current": 96.84,
+        "diff": 13.17
+      },
+      {
+        "symbol": "SR1N7",
+        "contract_month": "Jul-27",
+        "prediction": 96.97,
+        "current": 96.84,
+        "diff": 13.17
+      },
+      {
+        "symbol": "SR1Q7",
+        "contract_month": "Aug-27",
+        "prediction": 96.97,
+        "current": 96.82,
+        "diff": 15.17
+      },
+      {
+        "symbol": "SR1U7",
+        "contract_month": "Sep-27",
+        "prediction": 96.97,
+        "current": 96.81,
+        "diff": 16.17
+      },
+      {
+        "symbol": "SR1V7",
+        "contract_month": "Oct-27",
+        "prediction": 96.97,
+        "current": 96.805,
+        "diff": 16.67
+      },
+      {
+        "symbol": "SR1X7",
+        "contract_month": "Nov-27",
+        "prediction": 96.97,
+        "current": 96.8,
+        "diff": 17.17
+      }
+    ]
+  }
+}

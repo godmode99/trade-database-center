@@ -1,0 +1,73 @@
+2026-02-17 21:55:08,350 | INFO | === FETCH PIPELINE START ===
+2026-02-17 21:55:08,352 | INFO | Connecting to MT5...
+2026-02-17 21:55:24,907 | INFO | MT5 connected.
+2026-02-17 21:55:24,907 | INFO | Fetching EURUSD H4 (400 bars)...
+2026-02-17 21:55:25,211 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\4H_feature_eurusd_daily_170226_2155.csv rows=400
+2026-02-17 21:55:25,211 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\4H_raw_eurusd_daily_170226_2155.csv rows=400 latest=2026-02-17T23:00:00+07:00
+2026-02-17 21:55:25,212 | INFO | Fetching EURUSD D1 (600 bars)...
+2026-02-17 21:55:25,411 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\1D_feature_eurusd_daily_170226_2155.csv rows=600
+2026-02-17 21:55:25,412 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\1D_raw_eurusd_daily_170226_2155.csv rows=600 latest=2026-02-17T07:00:00+07:00
+2026-02-17 21:55:25,417 | INFO | Wrote manifest latest: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\fetch_manifest.json
+2026-02-17 21:55:25,417 | INFO | Wrote manifest archive: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\fetch_manifest_20260217.json
+2026-02-17 21:55:25,677 | INFO | Wrote summary: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\daily_summary_170226T2155.json
+2026-02-17 21:55:25,677 | INFO | Manifest summary: stale_sources=[]
+2026-02-17 21:55:25,678 | INFO | === FETCH PIPELINE END ===
+2026-02-17 21:58:57,200 | INFO | === FETCH PIPELINE START ===
+2026-02-17 21:58:57,201 | INFO | Connecting to MT5...
+2026-02-17 21:58:57,213 | INFO | MT5 connected.
+2026-02-17 21:58:57,213 | INFO | Fetching EURUSD H4 (400 bars)...
+2026-02-17 21:58:57,313 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\4H_feature_eurusd_daily_170226_2158.csv rows=400
+2026-02-17 21:58:57,314 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\4H_raw_eurusd_daily_170226_2158.csv rows=400 latest=2026-02-17T23:00:00+07:00
+2026-02-17 21:58:57,314 | INFO | Fetching EURUSD D1 (600 bars)...
+2026-02-17 21:58:57,461 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\1D_feature_eurusd_daily_170226_2158.csv rows=600
+2026-02-17 21:58:57,461 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\1D_raw_eurusd_daily_170226_2158.csv rows=600 latest=2026-02-17T07:00:00+07:00
+2026-02-17 21:58:57,465 | INFO | Wrote manifest latest: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\fetch_manifest.json
+2026-02-17 21:58:57,466 | INFO | Wrote manifest archive: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\fetch_manifest_20260217.json
+2026-02-17 21:58:57,668 | INFO | Wrote summary: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\daily_summary_170226T2158.json
+2026-02-17 21:58:57,669 | INFO | Manifest summary: stale_sources=[]
+2026-02-17 21:58:57,669 | INFO | === FETCH PIPELINE END ===
+2026-02-17 22:05:22,130 | INFO | === FETCH PIPELINE START ===
+2026-02-17 22:05:22,162 | INFO | Connecting to MT5...
+2026-02-17 22:05:22,177 | INFO | MT5 connected.
+2026-02-17 22:05:22,179 | INFO | Fetching EURUSD W1 (300 bars)...
+2026-02-17 22:05:23,925 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\1W_feature_eurusd_weekly_170226_2205.csv rows=181
+2026-02-17 22:05:23,925 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\1W_raw_eurusd_weekly_170226_2205.csv rows=181 latest=2026-02-15T07:00:00+07:00
+2026-02-17 22:05:23,926 | INFO | Fetching EURUSD D1 (1000 bars)...
+2026-02-17 22:05:24,093 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\1D_feature_eurusd_weekly_170226_2205.csv rows=892
+2026-02-17 22:05:24,094 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\1D_raw_eurusd_weekly_170226_2205.csv rows=892 latest=2026-02-17T07:00:00+07:00
+2026-02-17 22:05:24,094 | INFO | Fetching EURUSD H4 (600 bars)...
+2026-02-17 22:05:24,316 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\4H_feature_eurusd_weekly_170226_2205.csv rows=600
+2026-02-17 22:05:24,316 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\4H_raw_eurusd_weekly_170226_2205.csv rows=600 latest=2026-02-17T23:00:00+07:00
+2026-02-17 22:05:24,322 | INFO | Wrote manifest latest: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\fetch_manifest.json
+2026-02-17 22:05:24,322 | INFO | Wrote manifest archive: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\fetch_manifest_20260217.json
+2026-02-17 22:05:24,592 | INFO | Wrote summary: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\weekly\weekly_summary_170226T2205.json
+2026-02-17 22:05:24,593 | INFO | Manifest summary: stale_sources=[]
+2026-02-17 22:05:24,593 | INFO | === FETCH PIPELINE END ===
+2026-02-17 22:12:55,592 | INFO | === FETCH PIPELINE START ===
+2026-02-17 22:12:55,594 | INFO | Connecting to MT5...
+2026-02-17 22:12:55,607 | INFO | MT5 connected.
+2026-02-17 22:12:55,607 | INFO | Fetching EURUSD H4 (180 bars)...
+2026-02-17 22:12:55,706 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\4H_feature_eurusd_daily_170226_2212.csv rows=180
+2026-02-17 22:12:55,706 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\4H_raw_eurusd_daily_170226_2212.csv rows=180 latest=2026-02-17T23:00:00+07:00
+2026-02-17 22:12:55,707 | INFO | Fetching EURUSD D1 (60 bars)...
+2026-02-17 22:12:55,754 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\1D_feature_eurusd_daily_170226_2212.csv rows=60
+2026-02-17 22:12:55,754 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\1D_raw_eurusd_daily_170226_2212.csv rows=60 latest=2026-02-17T07:00:00+07:00
+2026-02-17 22:12:55,759 | INFO | Wrote manifest latest: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\fetch_manifest.json
+2026-02-17 22:12:55,759 | INFO | Wrote manifest archive: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\fetch_manifest_20260217.json
+2026-02-17 22:12:55,866 | INFO | Wrote summary: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\daily_summary_170226T2212.json
+2026-02-17 22:12:55,866 | INFO | Manifest summary: stale_sources=[]
+2026-02-17 22:12:55,867 | INFO | === FETCH PIPELINE END ===
+2026-02-17 22:14:23,812 | INFO | === FETCH PIPELINE START ===
+2026-02-17 22:14:23,813 | INFO | Connecting to MT5...
+2026-02-17 22:14:23,827 | INFO | MT5 connected.
+2026-02-17 22:14:23,827 | INFO | Fetching EURUSD H4 (180 bars)...
+2026-02-17 22:14:23,896 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\4H_feature_eurusd_daily_170226_2214.csv rows=180
+2026-02-17 22:14:23,896 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\4H_raw_eurusd_daily_170226_2214.csv rows=180 latest=2026-02-17T23:00:00+07:00
+2026-02-17 22:14:23,897 | INFO | Fetching EURUSD D1 (60 bars)...
+2026-02-17 22:14:23,940 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\1D_feature_eurusd_daily_170226_2214.csv rows=60
+2026-02-17 22:14:23,940 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\1D_raw_eurusd_daily_170226_2214.csv rows=60 latest=2026-02-17T07:00:00+07:00
+2026-02-17 22:14:23,945 | INFO | Wrote manifest latest: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\fetch_manifest.json
+2026-02-17 22:14:23,945 | INFO | Wrote manifest archive: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\fetch_manifest_20260217.json
+2026-02-17 22:14:24,041 | INFO | Wrote summary: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\daily\daily_summary_170226T2214.json
+2026-02-17 22:14:24,042 | INFO | Manifest summary: stale_sources=[]
+2026-02-17 22:14:24,042 | INFO | === FETCH PIPELINE END ===

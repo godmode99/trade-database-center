@@ -1,0 +1,22 @@
+2026-01-29 15:29:03,291 | INFO | === FETCH PIPELINE START ===
+2026-01-29 15:29:03,294 | INFO | Connecting to MT5...
+2026-01-29 15:29:11,039 | INFO | MT5 connected.
+2026-01-29 15:29:11,039 | INFO | Fetching EURUSD D1 (600 bars)...
+2026-01-29 15:29:11,998 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\fetch\mt5\raw_data_mt5\eurusd_d1.csv rows=249 latest=2026-01-29T00:00:00Z
+2026-01-29 15:29:11,999 | INFO | Fetching EURUSD H4 (1200 bars)...
+2026-01-29 15:29:12,132 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\fetch\mt5\raw_data_mt5\eurusd_h4.csv rows=1200 latest=2026-01-29T08:00:00Z
+2026-01-29 15:29:12,138 | INFO | Wrote manifest latest: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\fetch\mt5\raw_data_mt5\fetch_manifest.json
+2026-01-29 15:29:12,138 | INFO | Wrote manifest archive: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\fetch\mt5\raw_data_mt5\fetch_manifest_20260129.json
+2026-01-29 15:29:12,138 | INFO | Manifest summary: stale_sources=[]
+2026-01-29 15:29:12,139 | INFO | === FETCH PIPELINE END ===
+2026-01-29 17:01:54,122 | INFO | === FETCH PIPELINE START ===
+2026-01-29 17:01:54,123 | INFO | Connecting to MT5...
+2026-01-29 17:01:58,313 | INFO | MT5 connected.
+2026-01-29 17:01:58,313 | INFO | Fetching EURUSD D1 (600 bars)...
+2026-01-29 17:01:59,378 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\eurusd_d1.csv rows=309 latest=2026-01-29T00:00:00Z
+2026-01-29 17:01:59,378 | INFO | Fetching EURUSD H4 (1200 bars)...
+2026-01-29 17:01:59,520 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\eurusd_h4.csv rows=1200 latest=2026-01-29T12:00:00Z
+2026-01-29 17:01:59,525 | INFO | Wrote manifest latest: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\fetch_manifest.json
+2026-01-29 17:01:59,525 | INFO | Wrote manifest archive: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\Data\raw_data\mt5\fetch_manifest_20260129.json
+2026-01-29 17:01:59,526 | INFO | Manifest summary: stale_sources=[]
+2026-01-29 17:01:59,526 | INFO | === FETCH PIPELINE END ===

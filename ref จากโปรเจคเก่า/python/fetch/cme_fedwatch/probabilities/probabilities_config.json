@@ -1,0 +1,8 @@
+{
+  "timezone": "Asia/Bangkok",
+  "telegram": {
+    "enabled": true,
+    "bot_token": "",
+    "chat_id": ""
+  }
+}

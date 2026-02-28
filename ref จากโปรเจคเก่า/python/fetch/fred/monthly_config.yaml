@@ -1,0 +1,38 @@
+fred:
+  api_key: "" # ใช้จาก .env (FRED_API_KEY)
+  observation_start: "2010-01-01"
+  timeout_seconds: 30
+  run_mode: "monthly"
+  modes:
+    monthly:
+      - DGS2
+      - EFFR
+      - ECBDFR
+      - ECBESTRVOLWGTTRMDMNRT
+      - DTWEXBGS
+      - VIXCLS
+      - DGS10
+      - DFII10
+      - BAMLH0A0HYM2
+      - T10YIE
+      - CPILFESL
+      - PAYEMS
+
+output:
+  data_dir: "../../Data/raw_data/fred"
+  logs_dir: "logs"
+  archive:
+    keep_run_manifest: true
+    keep_error_report: true
+
+retry:
+  attempts: 3
+  sleep_seconds: 2
+
+telegram:
+  enabled: true
+  bot_token: "" # ใช้จาก .env (TELEGRAM_BOT_TOKEN)
+  chat_id: "" # ใช้จาก .env (TELEGRAM_CHAT_ID)
+  send_on_success: true
+  send_on_warning: true
+  send_on_error: true

@@ -1,0 +1,9 @@
+2026-02-17 21:55:59,328 | INFO | === CALENDAR PIPELINE START ===
+2026-02-17 21:55:59,329 | INFO | SKIP 01_save_session
+2026-02-17 21:55:59,330 | INFO | RUN  02_capture_document_html
+2026-02-17 21:56:18,404 | INFO | RUN  03_extract_from_document
+2026-02-17 21:56:19,098 | INFO | RUN  select_events
+2026-02-17 21:56:19,300 | INFO | SKIP 20_make_risk_windows
+2026-02-17 21:56:19,300 | INFO | SKIP 30_refresh_actuals
+2026-02-17 21:56:19,301 | INFO | SKIP 40_compute_surprise
+2026-02-17 21:56:19,301 | INFO | === CALENDAR PIPELINE END ===

@@ -1,0 +1,21 @@
+{
+  "asof_th": "2026-02-17T22:14:23+07:00",
+  "sources": {
+    "EURUSD_H4": {
+      "ok": true,
+      "rows": 180,
+      "latest_time": "2026-02-17T23:00:00+07:00",
+      "used_cache": false,
+      "error": null
+    },
+    "EURUSD_D1": {
+      "ok": true,
+      "rows": 60,
+      "latest_time": "2026-02-17T07:00:00+07:00",
+      "used_cache": false,
+      "error": null
+    }
+  },
+  "stale_sources": [],
+  "notes": ""
+}

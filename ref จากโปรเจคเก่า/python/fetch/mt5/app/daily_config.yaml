@@ -1,0 +1,104 @@
+app:
+  timezone: "Asia/Bangkok"
+
+mt5:
+  # ถ้า MT5 เปิดอยู่ปกติ ส่วนใหญ่ "initialize()" จะเจอเอง
+  # ถ้าไม่เจอ ให้ใส่ path ของ terminal64.exe เช่น:
+  # terminal_path: "C:\\Program Files\\MetaTrader 5\\terminal64.exe"
+  terminal_path: null
+
+symbols:
+  - "EURUSD"
+
+fetch:
+  # Timeframe ที่ต้องการดึง (รองรับหลาย timeframe)
+  timeframes:
+    - timeframe: "H4"
+      bars: 180
+    - timeframe: "D1"
+      bars: 60
+  # จะบังคับใช้ server time ของ MT5 หรือแปลงเป็น UTC
+  store_time_as_th: true
+
+output:
+  data_dir: "../../Data/raw_data/mt5/daily"
+  logs_dir: "logs"
+  format: "csv" # csv หรือ json
+  file_label: "daily"
+
+features:
+  file_label: "daily"
+  pivot_left: 2
+  pivot_right: 2
+  timeframes:
+    - timeframe: "H4"
+      columns:
+        - tr
+        - atr14
+        - range
+        - body
+        - upper_wick
+        - lower_wick
+        - close_pos
+        - swing_high
+        - swing_low
+        - structure_event
+        - bos_up
+        - bos_dn
+        - choch_up
+        - choch_dn
+        - ema20
+        - ema50
+        - pdh
+        - pdl
+        - pdc
+        - sweep_prev_high
+        - sweep_prev_low
+      prev_period: "D"
+    - timeframe: "D1"
+      columns:
+        - tr
+        - atr14
+        - range
+        - body
+        - upper_wick
+        - lower_wick
+        - close_pos
+        - swing_high
+        - swing_low
+        - structure_event
+        - bos_up
+        - bos_dn
+        - choch_up
+        - choch_dn
+        - ema20
+        - ema50
+        - pwh
+        - pwl
+        - pwc
+        - sweep_prev_high
+        - sweep_prev_low
+      prev_period: "W"
+
+archive:
+  keep_run_manifest: true
+  keep_error_report: true
+
+validation:
+  # ยอมให้ missing ได้ไม่เกินกี่เปอร์เซ็นต์
+  max_missing_ratio: 0.01
+  # เช็คความสมเหตุสมผลของราคา
+  min_price: 0.0001
+  max_price: 1000.0
+
+retry:
+  attempts: 3
+  sleep_seconds: 2
+
+telegram:
+  enabled: true
+  bot_token: "" # ใช้จาก .env (TELEGRAM_BOT_TOKEN)
+  chat_id: "" # ใช้จาก .env (TELEGRAM_CHAT_ID)
+  send_on_success: true
+  send_on_warning: true
+  send_on_error: true

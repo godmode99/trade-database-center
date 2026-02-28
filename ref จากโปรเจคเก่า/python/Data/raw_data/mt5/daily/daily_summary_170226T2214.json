@@ -1,0 +1,833 @@
+{
+  "schema_version": "bias_summary.v1",
+  "symbol": "EURUSD",
+  "asof": {
+    "time_th": "2026-02-17T07:00:00+07:00",
+    "time_utc": "2026-02-17T00:00:00Z"
+  },
+  "meta": {
+    "timezone_for_period_levels": "Asia/Bangkok",
+    "inputs": {
+      "h4_features_file": "4H_feature_eurusd_daily_170226_2214.csv",
+      "d1_features_file": "1D_feature_eurusd_daily_170226_2214.csv"
+    },
+    "feature_rules": {
+      "recency_filter": "Levels older than window are only kept if distance_atr <= 1.5 (nearest swings).",
+      "rank_rule": "Sort by distance_atr then age_days; key_levels_ranked keeps distance_atr <= 3 and age_days <= window_days."
+    },
+    "atr_period": 14,
+    "atr_method": "EMA_TR (alpha=1/14, adjust=False)",
+    "swing_pivot": {
+      "left": 2,
+      "right": 2
+    },
+    "bos_rule": "close_break (based on your implementation)",
+    "choch_rule": "close_break (based on your implementation)"
+  },
+  "timeframes": {
+    "H4": {
+      "lookback_bars": 180,
+      "last_bar": {
+        "time_th": "2026-02-17T23:00:00+07:00",
+        "open": 1.18218,
+        "high": 1.18278,
+        "low": 1.18118,
+        "close": 1.18126,
+        "tick_volume": 4398
+      },
+      "indicators": {
+        "atr14": 0.0020114504695564177,
+        "ema20": 1.185184827941519,
+        "ema50": 1.185608151403339
+      },
+      "structure": {
+        "last_event": {
+          "type": "BOS_DN",
+          "time_th": "2026-02-17T23:00:00+07:00",
+          "level_close": 1.18126,
+          "age_bars": 0
+        },
+        "last_bos": {
+          "type": "BOS_DN",
+          "time_th": "2026-02-17T23:00:00+07:00",
+          "level_close": 1.18126,
+          "age_bars": 0
+        },
+        "last_choch": {
+          "type": "CHOCH_DN",
+          "time_th": "2026-02-17T07:00:00+07:00",
+          "level_close": 1.1844000000000001,
+          "age_bars": 4
+        }
+      },
+      "prev_levels": {
+        "pdh": 1.187,
+        "pdl": 1.18459,
+        "pdc": 1.18476
+      },
+      "swings_recent": {
+        "window_days": 30,
+        "highs": [
+          {
+            "time_th": "2026-01-20T19:00:00+07:00",
+            "price": 1.1768
+          },
+          {
+            "time_th": "2026-01-21T19:00:00+07:00",
+            "price": 1.17426
+          },
+          {
+            "time_th": "2026-01-23T07:00:00+07:00",
+            "price": 1.1758899999999999
+          },
+          {
+            "time_th": "2026-01-26T07:00:00+07:00",
+            "price": 1.18973
+          },
+          {
+            "time_th": "2026-01-26T23:00:00+07:00",
+            "price": 1.19066
+          },
+          {
+            "time_th": "2026-01-28T03:00:00+07:00",
+            "price": 1.20819
+          },
+          {
+            "time_th": "2026-01-29T15:00:00+07:00",
+            "price": 1.19961
+          },
+          {
+            "time_th": "2026-01-30T07:00:00+07:00",
+            "price": 1.19742
+          },
+          {
+            "time_th": "2026-01-30T19:00:00+07:00",
+            "price": 1.19542
+          },
+          {
+            "time_th": "2026-02-04T15:00:00+07:00",
+            "price": 1.18375
+          },
+          {
+            "time_th": "2026-02-05T23:00:00+07:00",
+            "price": 1.18213
+          },
+          {
+            "time_th": "2026-02-09T23:00:00+07:00",
+            "price": 1.19262
+          },
+          {
+            "time_th": "2026-02-10T23:00:00+07:00",
+            "price": 1.19281
+          },
+          {
+            "time_th": "2026-02-11T19:00:00+07:00",
+            "price": 1.1926700000000001
+          },
+          {
+            "time_th": "2026-02-12T23:00:00+07:00",
+            "price": 1.18894
+          },
+          {
+            "time_th": "2026-02-13T19:00:00+07:00",
+            "price": 1.18846
+          },
+          {
+            "time_th": "2026-02-16T15:00:00+07:00",
+            "price": 1.187
+          }
+        ],
+        "lows": [
+          {
+            "time_th": "2026-01-19T07:00:00+07:00",
+            "price": 1.15767
+          },
+          {
+            "time_th": "2026-01-22T07:00:00+07:00",
+            "price": 1.16696
+          },
+          {
+            "time_th": "2026-01-23T15:00:00+07:00",
+            "price": 1.17278
+          },
+          {
+            "time_th": "2026-01-26T19:00:00+07:00",
+            "price": 1.1834500000000001
+          },
+          {
+            "time_th": "2026-01-27T15:00:00+07:00",
+            "price": 1.185
+          },
+          {
+            "time_th": "2026-01-29T03:00:00+07:00",
+            "price": 1.18953
+          },
+          {
+            "time_th": "2026-01-29T23:00:00+07:00",
+            "price": 1.19056
+          },
+          {
+            "time_th": "2026-01-30T11:00:00+07:00",
+            "price": 1.18945
+          },
+          {
+            "time_th": "2026-02-02T07:00:00+07:00",
+            "price": 1.18393
+          },
+          {
+            "time_th": "2026-02-03T03:00:00+07:00",
+            "price": 1.17755
+          },
+          {
+            "time_th": "2026-02-03T23:00:00+07:00",
+            "price": 1.1779600000000001
+          },
+          {
+            "time_th": "2026-02-04T23:00:00+07:00",
+            "price": 1.179
+          },
+          {
+            "time_th": "2026-02-06T07:00:00+07:00",
+            "price": 1.17652
+          },
+          {
+            "time_th": "2026-02-11T07:00:00+07:00",
+            "price": 1.18858
+          },
+          {
+            "time_th": "2026-02-11T19:00:00+07:00",
+            "price": 1.1832799999999999
+          },
+          {
+            "time_th": "2026-02-12T15:00:00+07:00",
+            "price": 1.18519
+          },
+          {
+            "time_th": "2026-02-13T03:00:00+07:00",
+            "price": 1.18558
+          },
+          {
+            "time_th": "2026-02-13T15:00:00+07:00",
+            "price": 1.18468
+          }
+        ],
+        "resistance_highs_recent": [
+          {
+            "time_th": "2026-01-26T07:00:00+07:00",
+            "price": 1.18973
+          },
+          {
+            "time_th": "2026-01-26T23:00:00+07:00",
+            "price": 1.19066
+          },
+          {
+            "time_th": "2026-01-28T03:00:00+07:00",
+            "price": 1.20819
+          },
+          {
+            "time_th": "2026-01-29T15:00:00+07:00",
+            "price": 1.19961
+          },
+          {
+            "time_th": "2026-01-30T07:00:00+07:00",
+            "price": 1.19742
+          },
+          {
+            "time_th": "2026-01-30T19:00:00+07:00",
+            "price": 1.19542
+          },
+          {
+            "time_th": "2026-02-04T15:00:00+07:00",
+            "price": 1.18375
+          },
+          {
+            "time_th": "2026-02-05T23:00:00+07:00",
+            "price": 1.18213
+          },
+          {
+            "time_th": "2026-02-09T23:00:00+07:00",
+            "price": 1.19262
+          },
+          {
+            "time_th": "2026-02-10T23:00:00+07:00",
+            "price": 1.19281
+          },
+          {
+            "time_th": "2026-02-11T19:00:00+07:00",
+            "price": 1.1926700000000001
+          },
+          {
+            "time_th": "2026-02-12T23:00:00+07:00",
+            "price": 1.18894
+          },
+          {
+            "time_th": "2026-02-13T19:00:00+07:00",
+            "price": 1.18846
+          },
+          {
+            "time_th": "2026-02-16T15:00:00+07:00",
+            "price": 1.187
+          }
+        ],
+        "support_lows_recent": [
+          {
+            "time_th": "2026-01-19T07:00:00+07:00",
+            "price": 1.15767
+          },
+          {
+            "time_th": "2026-01-22T07:00:00+07:00",
+            "price": 1.16696
+          },
+          {
+            "time_th": "2026-01-23T15:00:00+07:00",
+            "price": 1.17278
+          },
+          {
+            "time_th": "2026-02-03T03:00:00+07:00",
+            "price": 1.17755
+          },
+          {
+            "time_th": "2026-02-03T23:00:00+07:00",
+            "price": 1.1779600000000001
+          },
+          {
+            "time_th": "2026-02-04T23:00:00+07:00",
+            "price": 1.179
+          },
+          {
+            "time_th": "2026-02-06T07:00:00+07:00",
+            "price": 1.17652
+          }
+        ]
+      },
+      "swings_nearest": {
+        "max_distance_atr": 3.0,
+        "resistance_highs_nearest": [
+          {
+            "time_th": "2026-02-05T23:00:00+07:00",
+            "price": 1.18213,
+            "distance_atr": 0.4325237002687848
+          },
+          {
+            "time_th": "2026-02-04T15:00:00+07:00",
+            "price": 1.18375,
+            "distance_atr": 1.2379126593901262
+          },
+          {
+            "time_th": "2026-02-16T15:00:00+07:00",
+            "price": 1.187,
+            "distance_atr": 2.85366211441732
+          }
+        ],
+        "support_lows_nearest": [
+          {
+            "time_th": "2026-02-04T23:00:00+07:00",
+            "price": 1.179,
+            "distance_atr": 1.1235673133419604
+          },
+          {
+            "time_th": "2026-02-03T23:00:00+07:00",
+            "price": 1.1779600000000001,
+            "distance_atr": 1.6406071389506314
+          },
+          {
+            "time_th": "2026-02-03T03:00:00+07:00",
+            "price": 1.17755,
+            "distance_atr": 1.844440147123305
+          },
+          {
+            "time_th": "2026-02-06T07:00:00+07:00",
+            "price": 1.17652,
+            "distance_atr": 2.356508435947355
+          }
+        ]
+      },
+      "positioning_atr": {
+        "price_now": 1.18126,
+        "dist_to_PDH_atr": 2.8537,
+        "dist_to_PDL_atr": 1.6555,
+        "dist_to_PDC_atr": 1.74,
+        "dist_to_ema20_atr": 1.9512,
+        "dist_to_ema50_atr": 2.1617
+      },
+      "key_levels_ranked": [
+        {
+          "type": "BOS_DN",
+          "level": 1.18126,
+          "distance_atr": 0.0,
+          "age_days": 0
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.18213,
+          "distance_atr": 0.4325237002687848,
+          "age_days": 12
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.179,
+          "distance_atr": 1.1235673133419604,
+          "age_days": 13
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.18375,
+          "distance_atr": 1.2379126593901262,
+          "age_days": 13
+        },
+        {
+          "type": "CHOCH_DN",
+          "level": 1.1844000000000001,
+          "distance_atr": 1.561062550395587,
+          "age_days": 0
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.1779600000000001,
+          "distance_atr": 1.6406071389506314,
+          "age_days": 14
+        },
+        {
+          "type": "PDL",
+          "level": 1.18459,
+          "distance_atr": 1.6555217493048264,
+          "age_days": 1
+        },
+        {
+          "type": "PDC",
+          "level": 1.18476,
+          "distance_atr": 1.7400378746447127,
+          "age_days": 1
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.17755,
+          "distance_atr": 1.844440147123305,
+          "age_days": 14
+        },
+        {
+          "type": "EMA20",
+          "level": 1.185184827941519,
+          "distance_atr": 1.9512426484876233,
+          "age_days": 0
+        },
+        {
+          "type": "EMA50",
+          "level": 1.185608151403339,
+          "distance_atr": 2.161699464714081,
+          "age_days": 0
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.17652,
+          "distance_atr": 2.356508435947355,
+          "age_days": 11
+        },
+        {
+          "type": "PDH",
+          "level": 1.187,
+          "distance_atr": 2.85366211441732,
+          "age_days": 1
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.187,
+          "distance_atr": 2.85366211441732,
+          "age_days": 1
+        }
+      ],
+      "key_levels_ranked_far": [
+        {
+          "type": "SWING_HIGH",
+          "level": 1.18846,
+          "distance_atr": 3.5795064849833964,
+          "age_days": 4
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.18894,
+          "distance_atr": 3.818140250648971,
+          "age_days": 5
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.18973,
+          "distance_atr": 4.210891656640123,
+          "age_days": 22
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.17278,
+          "distance_atr": 4.2158631934248545,
+          "age_days": 25
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.19066,
+          "distance_atr": 4.673244577617187,
+          "age_days": 22
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.19262,
+          "distance_atr": 5.647665787418191,
+          "age_days": 8
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.1926700000000001,
+          "distance_atr": 5.672523471341739,
+          "age_days": 6
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.19281,
+          "distance_atr": 5.742124986327431,
+          "age_days": 7
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.19542,
+          "distance_atr": 7.039696087133895,
+          "age_days": 18
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.16696,
+          "distance_atr": 7.109297602119697,
+          "age_days": 26
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.19742,
+          "distance_atr": 8.034003444073715,
+          "age_days": 18
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.19961,
+          "distance_atr": 9.122769999922886,
+          "age_days": 19
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.15767,
+          "distance_atr": 11.727855275105167,
+          "age_days": 29
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.20819,
+          "distance_atr": 13.388348561194725,
+          "age_days": 20
+        }
+      ],
+      "notes_flags": {
+        "sweep_prev_high": 0,
+        "sweep_prev_low": 0
+      }
+    },
+    "D1": {
+      "lookback_bars": 60,
+      "last_bar": {
+        "time_th": "2026-02-17T07:00:00+07:00",
+        "open": 1.1848,
+        "high": 1.18515,
+        "low": 1.18118,
+        "close": 1.18126,
+        "tick_volume": 27421
+      },
+      "indicators": {
+        "atr14": 0.006688994775227157,
+        "ema20": 1.1828441980145739,
+        "ema50": 1.1761507085862435
+      },
+      "structure": {
+        "last_event": {
+          "type": "BOS_UP",
+          "time_th": "2026-01-26T07:00:00+07:00",
+          "level_close": 1.18786,
+          "age_bars": 16
+        },
+        "last_bos": {
+          "type": "BOS_UP",
+          "time_th": "2026-01-26T07:00:00+07:00",
+          "level_close": 1.18786,
+          "age_bars": 16
+        },
+        "last_choch": {
+          "type": "CHOCH_UP",
+          "time_th": "2026-01-23T07:00:00+07:00",
+          "level_close": 1.18273,
+          "age_bars": 17
+        }
+      },
+      "prev_levels": {
+        "pwh": 1.19281,
+        "pwl": 1.1832799999999999,
+        "pwc": 1.18502
+      },
+      "swings_recent": {
+        "window_days": 120,
+        "highs": [
+          {
+            "time_th": "2025-12-04T07:00:00+07:00",
+            "price": 1.16815
+          },
+          {
+            "time_th": "2025-12-16T07:00:00+07:00",
+            "price": 1.18035
+          },
+          {
+            "time_th": "2025-12-24T07:00:00+07:00",
+            "price": 1.18075
+          },
+          {
+            "time_th": "2026-01-12T07:00:00+07:00",
+            "price": 1.16981
+          },
+          {
+            "time_th": "2026-01-20T07:00:00+07:00",
+            "price": 1.1768
+          },
+          {
+            "time_th": "2026-01-27T07:00:00+07:00",
+            "price": 1.20819
+          },
+          {
+            "time_th": "2026-02-10T07:00:00+07:00",
+            "price": 1.19281
+          }
+        ],
+        "lows": [
+          {
+            "time_th": "2025-12-09T07:00:00+07:00",
+            "price": 1.16146
+          },
+          {
+            "time_th": "2025-12-19T07:00:00+07:00",
+            "price": 1.17024
+          },
+          {
+            "time_th": "2026-01-05T07:00:00+07:00",
+            "price": 1.16585
+          },
+          {
+            "time_th": "2026-01-09T07:00:00+07:00",
+            "price": 1.16177
+          },
+          {
+            "time_th": "2026-01-19T07:00:00+07:00",
+            "price": 1.15767
+          },
+          {
+            "time_th": "2026-02-02T07:00:00+07:00",
+            "price": 1.17755
+          },
+          {
+            "time_th": "2026-02-06T07:00:00+07:00",
+            "price": 1.17652
+          }
+        ],
+        "resistance_highs_recent": [
+          {
+            "time_th": "2026-01-27T07:00:00+07:00",
+            "price": 1.20819
+          },
+          {
+            "time_th": "2026-02-10T07:00:00+07:00",
+            "price": 1.19281
+          }
+        ],
+        "support_lows_recent": [
+          {
+            "time_th": "2025-12-09T07:00:00+07:00",
+            "price": 1.16146
+          },
+          {
+            "time_th": "2025-12-19T07:00:00+07:00",
+            "price": 1.17024
+          },
+          {
+            "time_th": "2026-01-05T07:00:00+07:00",
+            "price": 1.16585
+          },
+          {
+            "time_th": "2026-01-09T07:00:00+07:00",
+            "price": 1.16177
+          },
+          {
+            "time_th": "2026-01-19T07:00:00+07:00",
+            "price": 1.15767
+          },
+          {
+            "time_th": "2026-02-02T07:00:00+07:00",
+            "price": 1.17755
+          },
+          {
+            "time_th": "2026-02-06T07:00:00+07:00",
+            "price": 1.17652
+          }
+        ]
+      },
+      "swings_nearest": {
+        "max_distance_atr": 3.0,
+        "resistance_highs_nearest": [
+          {
+            "time_th": "2026-02-10T07:00:00+07:00",
+            "price": 1.19281,
+            "distance_atr": 1.7267168518019531
+          }
+        ],
+        "support_lows_nearest": [
+          {
+            "time_th": "2026-02-02T07:00:00+07:00",
+            "price": 1.17755,
+            "distance_atr": 0.5546423827000058
+          },
+          {
+            "time_th": "2026-02-06T07:00:00+07:00",
+            "price": 1.17652,
+            "distance_atr": 0.7086266560641763
+          },
+          {
+            "time_th": "2025-12-19T07:00:00+07:00",
+            "price": 1.17024,
+            "distance_atr": 1.6474822257019617
+          },
+          {
+            "time_th": "2026-01-05T07:00:00+07:00",
+            "price": 1.16585,
+            "distance_atr": 2.3037841286812193
+          },
+          {
+            "time_th": "2026-01-09T07:00:00+07:00",
+            "price": 1.16177,
+            "distance_atr": 2.9137412503567295
+          },
+          {
+            "time_th": "2025-12-09T07:00:00+07:00",
+            "price": 1.16146,
+            "distance_atr": 2.9600860316605098
+          }
+        ]
+      },
+      "positioning_atr": {
+        "price_now": 1.18126,
+        "dist_to_PWH_atr": 1.7267,
+        "dist_to_PWL_atr": 0.302,
+        "dist_to_PWC_atr": 0.5621,
+        "dist_to_ema20_atr": 0.2368,
+        "dist_to_ema50_atr": 0.7638
+      },
+      "key_levels_ranked": [
+        {
+          "type": "CHOCH_UP",
+          "level": 1.18273,
+          "distance_atr": 0.21976396295662548,
+          "age_days": 25
+        },
+        {
+          "type": "EMA20",
+          "level": 1.1828441980145739,
+          "distance_atr": 0.2368364855719415,
+          "age_days": 0
+        },
+        {
+          "type": "PWL",
+          "level": 1.1832799999999999,
+          "distance_atr": 0.3019885749471694,
+          "age_days": 7
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.17755,
+          "distance_atr": 0.5546423827000058,
+          "age_days": 15
+        },
+        {
+          "type": "PWC",
+          "level": 1.18502,
+          "distance_atr": 0.562117347426437,
+          "age_days": 7
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.17652,
+          "distance_atr": 0.7086266560641763,
+          "age_days": 11
+        },
+        {
+          "type": "EMA50",
+          "level": 1.1761507085862435,
+          "distance_atr": 0.763835461896138,
+          "age_days": 0
+        },
+        {
+          "type": "BOS_UP",
+          "level": 1.18786,
+          "distance_atr": 0.9866953438868256,
+          "age_days": 22
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.17024,
+          "distance_atr": 1.6474822257019617,
+          "age_days": 60
+        },
+        {
+          "type": "PWH",
+          "level": 1.19281,
+          "distance_atr": 1.7267168518019531,
+          "age_days": 7
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.19281,
+          "distance_atr": 1.7267168518019531,
+          "age_days": 7
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.16585,
+          "distance_atr": 2.3037841286812193,
+          "age_days": 43
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.16177,
+          "distance_atr": 2.9137412503567295,
+          "age_days": 39
+        },
+        {
+          "type": "SWING_LOW",
+          "level": 1.16146,
+          "distance_atr": 2.9600860316605098,
+          "age_days": 70
+        }
+      ],
+      "key_levels_ranked_far": [
+        {
+          "type": "SWING_LOW",
+          "level": 1.15767,
+          "distance_atr": 3.5266883579227923,
+          "age_days": 29
+        },
+        {
+          "type": "SWING_HIGH",
+          "level": 1.20819,
+          "distance_atr": 4.02601600164736,
+          "age_days": 21
+        }
+      ],
+      "notes_flags": {
+        "sweep_prev_high": 0,
+        "sweep_prev_low": 0
+      }
+    }
+  },
+  "calendar_risk": {
+    "next_high_impact_utc": null,
+    "rule": "avoid_new_entries_60m_before_high_impact"
+  }
+}

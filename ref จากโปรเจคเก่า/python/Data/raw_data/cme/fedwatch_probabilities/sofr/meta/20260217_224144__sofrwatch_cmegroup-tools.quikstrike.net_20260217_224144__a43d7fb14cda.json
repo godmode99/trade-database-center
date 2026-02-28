@@ -1,0 +1,21 @@
+{
+  "timestamp": "20260217_224144",
+  "url": "https://cmegroup-tools.quikstrike.net/User/QuikStrikeView.aspx?viewitemid=SOFRWatch&userId=lwolf&jobRole=&company=&companyType=&userId=lwolf&jobRole=&company=&companyType=&insid=209526110&qsid=d5081e5f-ab25-4d0e-b8b7-828a5b84f703",
+  "status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "headers": {
+    "cache-control": "no-cache, no-store",
+    "pragma": "no-cache",
+    "content-type": "text/html; charset=utf-8",
+    "content-encoding": "gzip",
+    "expires": "-1",
+    "vary": "Accept-Encoding",
+    "server": "Microsoft-IIS/10.0",
+    "x-aspnet-version": "4.0.30319",
+    "x-powered-by": "ASP.NET",
+    "p3p": "CP=\"policy string goes here\"",
+    "date": "Tue, 17 Feb 2026 15:41:43 GMT",
+    "content-length": "29577"
+  },
+  "size_bytes": 229735
+}

@@ -1,0 +1,17 @@
+{
+  "user_data_dir": "cme_profile",
+  "auth_url": "https://login.cmegroup.com/sso/accountstatus/showAuth.action",
+  "username": "your_email_or_userid",
+  "password": "your_password",
+  "watchlist_filters": {
+    "daily": {"zq": "6", "sr1": "3", "sr3": "3", "zt": "1", "6e": "1"},
+    "weekly": {"zq": "6", "sr1": "3", "sr3": "3", "zn": "2", "6e": "1", "zt": "1", "zf": "1", "zb": "1"},
+    "monthly": {"zq": "12", "sr1": "6", "sr3": "6", "zn": "3", "tn": "2", "zb": "2", "ub": "2", "twe": "1", "6e": "1", "e7": "1", "m6e": "1"}
+  },
+  "default_max_expiry_year": 2026,
+  "telegram": {
+    "enabled": true,
+    "bot_token": "",
+    "chat_id": ""
+  }
+}

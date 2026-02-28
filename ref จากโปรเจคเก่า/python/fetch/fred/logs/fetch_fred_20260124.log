@@ -1,0 +1,6 @@
+2026-01-24 10:27:02,428 | INFO | === FRED FETCH PIPELINE START ===
+2026-01-24 10:27:02,431 | INFO | Fetching FRED series DGS2 from 2010-01-01...
+2026-01-24 10:27:04,046 | INFO | Saved C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\fetch\fred\raw_data_macro\us2y_dgs2.csv rows=4015 latest_date=2026-01-22
+2026-01-24 10:27:04,062 | INFO | Wrote manifest latest: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\fetch\fred\raw_data_macro\fetch_manifest.json
+2026-01-24 10:27:04,063 | INFO | Wrote manifest archive: C:\Users\iidogpon\Documents\GitHub\eurusd-swing-bias-bot\python\fetch\fred\raw_data_macro\fetch_manifest_20260124.json
+2026-01-24 10:27:04,070 | INFO | === FRED FETCH PIPELINE END ===
