@@ -14,6 +14,7 @@ import sys
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 from urllib import error, parse, request
 
@@ -222,7 +223,11 @@ def fetch_source(source_cfg: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def run(config_path: str, dry_run: bool) -> None:
-    cfg = load_config(config_path)
+    cfg_path = Path(config_path)
+    if not cfg_path.is_absolute() and not cfg_path.exists():
+        cfg_path = Path(__file__).resolve().parent / cfg_path
+
+    cfg = load_config(str(cfg_path))
     source_cfg = cfg["source"]
     db_cfg = cfg["database"]
     batch_size = int(cfg.get("pipeline", {}).get("batch_size", 500))
