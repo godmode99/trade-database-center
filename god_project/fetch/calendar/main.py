@@ -50,13 +50,16 @@ def load_env_file(path: Path) -> None:
 
 def hydrate_env_from_common_files(config_path: Path) -> None:
     script_dir = Path(__file__).resolve().parent
+    fetch_dir = script_dir.parent
     candidates = [
         Path.cwd() / ".env",
         Path.cwd() / ".env.local",
+        Path.cwd() / "god_project" / "fetch" / "supabase.env",
         config_path.parent / ".env",
         config_path.parent / ".env.local",
         script_dir / ".env",
         script_dir / ".env.local",
+        fetch_dir / "supabase.env",
     ]
     visited: set[Path] = set()
     for candidate in candidates:
