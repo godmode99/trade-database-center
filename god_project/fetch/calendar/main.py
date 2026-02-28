@@ -257,7 +257,7 @@ def fetch_source(source_cfg: dict[str, Any]) -> list[dict[str, Any]]:
     raise ValueError("source response must be list[object] or object with events key")
 
 
-def run(config_path: str, dry_run: bool) -> None:
+def run(config_path: str, dry_run: bool, require_db: bool = False) -> None:
     cfg_path = Path(config_path)
     if not cfg_path.is_absolute() and not cfg_path.exists():
         cfg_path = Path(__file__).resolve().parent / cfg_path
@@ -300,7 +300,10 @@ def run(config_path: str, dry_run: bool) -> None:
         or db_cfg.get("service_role_key")
     )
     if not base_url or not api_key:
-        raise ValueError("Missing Supabase URL/API key in env or config")
+        if require_db:
+            raise ValueError("Missing Supabase URL/API key in env or config")
+        print("WARN: Missing Supabase URL/API key in env or config, skip database write")
+        return
 
     client = SupabaseClient(base_url=base_url.rstrip("/"), api_key=api_key)
 
@@ -351,8 +354,13 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Fetch economic calendar and upsert to Supabase")
     ap.add_argument("--config", default="config.yaml", help="Path to YAML/JSON config")
     ap.add_argument("--dry-run", action="store_true", help="Fetch + normalize only")
+    ap.add_argument(
+        "--require-db",
+        action="store_true",
+        help="Fail immediately when Supabase credentials are missing",
+    )
     args = ap.parse_args()
-    run(args.config, args.dry_run)
+    run(args.config, args.dry_run, require_db=args.require_db)
 
 
 if __name__ == "__main__":
