@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Calendar fetch pipeline + Supabase upsert.
+"""Calendar fetch pipeline + Neon REST upsert.
 
 Usage:
   python main.py --config config.yaml
@@ -54,12 +54,12 @@ def hydrate_env_from_common_files(config_path: Path) -> None:
     candidates = [
         Path.cwd() / ".env",
         Path.cwd() / ".env.local",
-        Path.cwd() / "god_project" / "fetch" / "supabase.env",
+        Path.cwd() / "god_project" / "fetch" / "neon.env",
         config_path.parent / ".env",
         config_path.parent / ".env.local",
         script_dir / ".env",
         script_dir / ".env.local",
-        fetch_dir / "supabase.env",
+        fetch_dir / "neon.env",
     ]
     visited: set[Path] = set()
     for candidate in candidates:
@@ -198,7 +198,7 @@ def http_json(method: str, url: str, headers: dict[str, str], body: Any | None =
 
 
 @dataclass
-class SupabaseClient:
+class NeonRestClient:
     base_url: str
     api_key: str
 
@@ -289,26 +289,25 @@ def run(config_path: str, dry_run: bool, require_db: bool = False) -> None:
         return
 
     base_url = (
-        os.getenv(db_cfg.get("url_env", "SUPABASE_URL"))
-        or os.getenv("SUPABASE_URL")
-        or os.getenv("NEXT_PUBLIC_SUPABASE_URL")
+        os.getenv(db_cfg.get("url_env", "NEON_API_URL"))
+        or os.getenv("NEON_API_URL")
+        or os.getenv("NEXT_PUBLIC_NEON_API_URL")
         or db_cfg.get("url")
     )
     api_key = (
-        os.getenv(db_cfg.get("service_key_env", "SUPABASE_SERVICE_ROLE_KEY"))
-        or os.getenv("SUPABASE_SERVICE_ROLE_KEY")
-        or os.getenv("SUPABASE_SECRET_KEY")
-        or os.getenv("SUPABASE_ANON_KEY")
-        or os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+        os.getenv(db_cfg.get("service_key_env", "NEON_SERVICE_ROLE_KEY"))
+        or os.getenv("NEON_SERVICE_ROLE_KEY")
+        or os.getenv("NEON_REST_KEY")
+        or os.getenv("NEXT_PUBLIC_NEON_REST_KEY")
         or db_cfg.get("service_role_key")
     )
     if not base_url or not api_key:
         if require_db:
-            raise ValueError("Missing Supabase URL/API key in env or config")
-        print("WARN: Missing Supabase URL/API key in env or config, skip database write")
+            raise ValueError("Missing Neon API URL/service key in env or config")
+        print("WARN: Missing Neon API URL/service key in env or config, skip database write")
         return
 
-    client = SupabaseClient(base_url=base_url.rstrip("/"), api_key=api_key)
+    client = NeonRestClient(base_url=base_url.rstrip("/"), api_key=api_key)
 
     client.insert_pipeline_run(
         {
@@ -354,13 +353,13 @@ def run(config_path: str, dry_run: bool, require_db: bool = False) -> None:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description="Fetch economic calendar and upsert to Supabase")
+    ap = argparse.ArgumentParser(description="Fetch economic calendar and upsert to Neon REST")
     ap.add_argument("--config", default="config.yaml", help="Path to YAML/JSON config")
     ap.add_argument("--dry-run", action="store_true", help="Fetch + normalize only")
     ap.add_argument(
         "--require-db",
         action="store_true",
-        help="Fail immediately when Supabase credentials are missing",
+        help="Fail immediately when Neon REST credentials are missing",
     )
     args = ap.parse_args()
     run(args.config, args.dry_run, require_db=args.require_db)
