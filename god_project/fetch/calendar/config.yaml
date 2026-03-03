@@ -10,8 +10,8 @@
     },
   "database":
     {
-      "url_env": "SUPABASE_URL",
-      "service_key_env": "SUPABASE_SERVICE_ROLE_KEY",
+      "url_env": "NEON_API_URL",
+      "service_key_env": "NEON_SERVICE_ROLE_KEY",
       "url": "",
       "service_role_key": "",
     },

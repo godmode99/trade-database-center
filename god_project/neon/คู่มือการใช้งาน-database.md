@@ -18,7 +18,7 @@
 ## 2) เตรียม environment (แบบทีละขั้น)
 
 > สรุปสั้น: ถ้าจะ "รัน migration SQL" ต้องมี `NEON_URL` ก็พอ
-> แต่ถ้าจะ "รัน pipeline calendar" ให้ตั้ง `SUPABASE_URL` และ `SUPABASE_SERVICE_ROLE_KEY` เพิ่มด้วย (เพราะโค้ด pipeline ปัจจุบันยังอ่านชื่อตัวแปรชุดนี้เป็นหลัก)
+> แต่ถ้าจะ "รัน pipeline calendar" ให้ตั้ง `NEON_API_URL` และ `NEON_SERVICE_ROLE_KEY` เพิ่มด้วย (โค้ด pipeline ปัจจุบันใช้ชื่อตัวแปรชุด Neon โดยตรง)
 
 ### 2.1 สิ่งที่ต้องเตรียมก่อน
 
@@ -29,11 +29,8 @@
 ### 2.2 ตัวแปร env ที่ใช้งานจริง
 
 - `NEON_URL` : ใช้กับคำสั่ง `psql`/migration โดยตรง
-- `SUPABASE_URL` : base URL ของ REST endpoint (โค้ด calendar pipeline ใช้ชื่อนี้)
-- `SUPABASE_SERVICE_ROLE_KEY` : key สำหรับเขียนข้อมูลผ่าน REST
-
-> ทำไมเป็น `SUPABASE_*`?
-> เพราะ pipeline ที่ `god_project/fetch/calendar/main.py` รองรับชื่อ env กลุ่มนี้เป็นหลัก (รวม fallback อื่น) แม้ระบบฐานข้อมูลที่ใช้จริงคือ Neon
+- `NEON_API_URL` : base URL ของ REST endpoint สำหรับเขียนข้อมูล (`https://<project-ref>.neon.tech`)
+- `NEON_SERVICE_ROLE_KEY` : service role key สำหรับเขียนข้อมูลผ่าน REST
 
 ### 2.3 แนะนำวิธีตั้งค่าแบบง่ายสุด (Bash)
 
@@ -42,17 +39,17 @@
 export NEON_URL="postgresql://<user>:<password>@<host>/<db>?sslmode=require"
 
 # 2) REST สำหรับ pipeline
-export SUPABASE_URL="https://<project-ref>.neon.tech"
-export SUPABASE_SERVICE_ROLE_KEY="<your_service_role_key>"
+export NEON_API_URL="https://<project-ref>.neon.tech"
+export NEON_SERVICE_ROLE_KEY="<your_service_role_key>"
 ```
 
 ### 2.4 ทางเลือก: ใส่ในไฟล์ env เพื่อไม่ต้อง export ทุกครั้ง
 
-สร้างไฟล์ `god_project/fetch/supabase.env`:
+สร้างไฟล์ `god_project/fetch/neon.env`:
 
 ```env
-SUPABASE_URL=https://<project-ref>.neon.tech
-SUPABASE_SERVICE_ROLE_KEY=<your_service_role_key>
+NEON_API_URL=https://<project-ref>.neon.tech
+NEON_SERVICE_ROLE_KEY=<your_service_role_key>
 ```
 
 จากนั้นรัน pipeline ได้เลย (ตัวสคริปต์จะพยายามโหลด env จากไฟล์นี้อัตโนมัติ)
@@ -62,8 +59,8 @@ SUPABASE_SERVICE_ROLE_KEY=<your_service_role_key>
 ```bash
 # ต้องเห็นค่าไม่ว่าง
 echo "$NEON_URL"
-echo "$SUPABASE_URL"
-echo "$SUPABASE_SERVICE_ROLE_KEY" | wc -c
+echo "$NEON_API_URL"
+echo "$NEON_SERVICE_ROLE_KEY" | wc -c
 ```
 
 ถ้า `wc -c` ได้ค่ามากกว่า `1` แปลว่ามีค่า key แล้ว
