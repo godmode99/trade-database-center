@@ -17,51 +17,59 @@
 
 ## 2) เตรียม environment (แบบทีละขั้น)
 
-> สรุปสั้น: ถ้าจะ "รัน migration SQL" ต้องมี `NEON_URL` ก็พอ
-> แต่ถ้าจะ "รัน pipeline calendar" ให้ตั้ง `SUPABASE_URL` และ `SUPABASE_SERVICE_ROLE_KEY` เพิ่มด้วย (เพราะโค้ด pipeline ปัจจุบันยังอ่านชื่อตัวแปรชุดนี้เป็นหลัก)
+> สรุปสั้น: ให้ใช้ไฟล์ `neon.env` (ที่ได้จาก Neon Dashboard) เป็นฐาน แล้ว map ค่าไปยัง env ที่สคริปต์ใช้งาน
+> - migration SQL ใช้ `NEON_URL` (แนะนำให้ map จาก `DATABASE_URL` ใน `neon.env`)
+> - pipeline calendar ใช้ `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` (แนะนำให้ map `SUPABASE_URL` จาก `POSTGRES_URL`)
 
 ### 2.1 สิ่งที่ต้องเตรียมก่อน
 
 1. มี Neon project ที่สร้างฐานข้อมูลไว้แล้ว
-2. มี connection string แบบ Postgres (ได้จากหน้า Dashboard ของ Neon)
+2. ดาวน์โหลดไฟล์ `neon.env` จากหน้า Dashboard ของ Neon แล้ววางไว้ที่ root repo (`/workspace/trade-database-center/neon.env`)
 3. มี service role key สำหรับ REST write (กรณีรัน pipeline ที่เขียน DB)
 
 ### 2.2 ตัวแปร env ที่ใช้งานจริง
 
-- `NEON_URL` : ใช้กับคำสั่ง `psql`/migration โดยตรง
-- `SUPABASE_URL` : base URL ของ REST endpoint (โค้ด calendar pipeline ใช้ชื่อนี้)
+- `DATABASE_URL` : อยู่ใน `neon.env` (ค่า pooled connection จาก Neon)
+- `POSTGRES_URL` : อยู่ใน `neon.env` (ใช้เป็น base URL สำหรับ map ไป `SUPABASE_URL`)
+- `NEON_URL` : env ที่ใช้กับ `psql`/migration (แนะนำ map จาก `DATABASE_URL`)
+- `SUPABASE_URL` : env ที่ pipeline calendar อ่านเพื่อยิง REST endpoint (แนะนำ map จาก `POSTGRES_URL`)
 - `SUPABASE_SERVICE_ROLE_KEY` : key สำหรับเขียนข้อมูลผ่าน REST
 
-> ทำไมเป็น `SUPABASE_*`?
-> เพราะ pipeline ที่ `god_project/fetch/calendar/main.py` รองรับชื่อ env กลุ่มนี้เป็นหลัก (รวม fallback อื่น) แม้ระบบฐานข้อมูลที่ใช้จริงคือ Neon
+> หมายเหตุ: pipeline ปัจจุบันที่ `god_project/fetch/calendar/main.py` ยังอ่านชื่อ env ชุด `SUPABASE_*` เป็นหลัก
 
 ### 2.3 แนะนำวิธีตั้งค่าแบบง่ายสุด (Bash)
 
 ```bash
-# 1) SQL migration
-export NEON_URL="postgresql://<user>:<password>@<host>/<db>?sslmode=require"
+# 1) โหลดค่าพื้นฐานจาก neon.env
+set -a
+source neon.env
+set +a
 
-# 2) REST สำหรับ pipeline
-export SUPABASE_URL="https://<project-ref>.neon.tech"
+# 2) map ค่าให้ตรงกับ env ที่เครื่องมือในโปรเจคใช้งาน
+export NEON_URL="${DATABASE_URL}"
+export SUPABASE_URL="${POSTGRES_URL}"
 export SUPABASE_SERVICE_ROLE_KEY="<your_service_role_key>"
 ```
 
-### 2.4 ทางเลือก: ใส่ในไฟล์ env เพื่อไม่ต้อง export ทุกครั้ง
+### 2.4 ทางเลือก: เก็บค่าใน `neon.env` ให้ครบและ source ก่อนรัน
 
-สร้างไฟล์ `god_project/fetch/supabase.env`:
+ตัวอย่าง `neon.env` ที่เติมค่าสำหรับ pipeline:
 
 ```env
-SUPABASE_URL=https://<project-ref>.neon.tech
+DATABASE_URL=postgresql://<user>:<password>@<host>/<db>?sslmode=require
+POSTGRES_URL=https://<project-ref>.neon.tech
 SUPABASE_SERVICE_ROLE_KEY=<your_service_role_key>
 ```
 
-จากนั้นรัน pipeline ได้เลย (ตัวสคริปต์จะพยายามโหลด env จากไฟล์นี้อัตโนมัติ)
+ก่อนรันคำสั่ง ให้ `source neon.env` และ map เป็น `NEON_URL`/`SUPABASE_URL` ตามข้อ 2.3
 
 ### 2.5 เช็กว่าตั้ง env ถูกแล้ว
 
 ```bash
 # ต้องเห็นค่าไม่ว่าง
-echo "$NEON_URL"
+echo "$DATABASE_URL" | cut -c1-40
+echo "$POSTGRES_URL"
+echo "$NEON_URL" | cut -c1-40
 echo "$SUPABASE_URL"
 echo "$SUPABASE_SERVICE_ROLE_KEY" | wc -c
 ```
@@ -183,7 +191,7 @@ LIMIT 20;
 ## 9) Troubleshooting เบื้องต้น
 
 - เชื่อมต่อไม่ได้:
-  - ตรวจสอบ `NEON_URL` และ network allowlist
+  - ตรวจสอบว่ามีการ `source neon.env` แล้ว และ `NEON_URL` map มาจาก `DATABASE_URL` ถูกต้อง
   - ยืนยันว่าใส่ `sslmode=require`
 - migration ไม่ผ่าน:
   - ตรวจสอบสิทธิ์ user ว่าสร้าง schema/table ได้
