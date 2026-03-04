@@ -1,13 +1,13 @@
 # Database Design (v1) จาก ref โปรเจคเก่า
 
-อัปเดตล่าสุด: 2026-03-03
+อัปเดตล่าสุด: 2026-03-03 (review รอบปรับปรุง)
 
 ## 1) ขอบเขตที่ใช้ในการออกแบบ
 อ้างอิงจากข้อมูลจริงใน `refจากโปรเจคเก่า/python/Data/raw_data` แยกเป็น 4 แหล่ง:
 - `fred` (daily/weekly/monthly JSON + fetch manifest)
 - `calendar` (event list JSON/CSV + metadata)
 - `mt5` (OHLCV raw CSV + feature CSV + summary JSON + manifest)
-- `cme_fedwatch` (ยังไม่มีตัวอย่างไฟล์ใน ref ชุดนี้ จึงออกแบบตาม requirement ปัจจุบัน)
+- `cme_fedwatch` (มีตัวอย่างไฟล์แล้วทั้ง `fedwatch_quotes` และ `fedwatch_probabilities`)
 
 แนวคิดหลักของ schema:
 1. แยก **raw layer** กับ **serving layer** ชัดเจน
@@ -199,33 +199,42 @@ unique key:
 
 ## 4.4 CME FedWatch
 
-> หมายเหตุ: ไม่มีไฟล์ตัวอย่างใน ref ชุดนี้ จึงออกแบบตาม requirement ปัจจุบัน
+> อัปเดตจากการตรวจ ref: มีไฟล์ตัวอย่างทั้ง quotes และ probabilities แล้ว จึง refine schema ให้สอดคล้อง field จริง
 
 ### 4.4.1 `fedwatch_probabilities`
 - `id` (bigserial, pk)
 - `instrument` (text: `SOFR|ZQ`)
-- `meeting_date` (date)
-- `rate_bucket` (text)
-- `probability` (numeric(8,4))
-- `asof_date` (date)
+- `table_name` (text) — เช่น `SR1`, `SR3` จากไฟล์ `tables`
+- `symbol` (text)
+- `contract_month` (text)
+- `prediction` (numeric(8,4), nullable)
+- `current` (numeric(8,4), nullable)
+- `diff` (numeric(8,4), nullable)
+- `asof_at` (timestamptz)
+- `source_file` (text, nullable)
 - `ingestion_run_id` (fk)
 - `created_at`
 
 unique key:
-- `(instrument, meeting_date, rate_bucket, asof_date)`
+- `(instrument, table_name, symbol, contract_month, asof_at)`
 
 ### 4.4.2 `fedwatch_quotes`
 - `id` (bigserial, pk)
-- `symbol` (text)
+- `symbol` (text) — จาก `Code`
+- `display_name` (text, nullable) — จาก `Name`
 - `mode` (text: daily/weekly/monthly)
-- `quote_date` (date)
-- `open`, `high`, `low`, `close`, `settle` (numeric, nullable)
-- `volume`, `open_interest` (bigint, nullable)
+- `quote_date` (date, nullable)
+- `expiry_label` (text, nullable)
+- `last_price`, `change`, `open`, `high`, `low` (numeric, nullable)
+- `volume` (bigint, nullable)
+- `front_month` (text, nullable)
+- `captured_at` (timestamptz)
+- `source_file` (text, nullable)
 - `ingestion_run_id` (fk)
 - `created_at`
 
 unique key:
-- `(symbol, mode, quote_date)`
+- `(symbol, mode, captured_at)`
 
 ---
 
@@ -241,6 +250,13 @@ unique key:
    - `vw_fred_latest_by_series`
    - `vw_calendar_upcoming_high_impact`
    - `vw_mt5_latest_feature_by_symbol_tf`
+5. เพิ่มคอลัมน์ lineage/quality ที่ใช้ร่วมกันในทุกตาราง fact หลัก:
+   - `source_record_hash` (text, nullable) สำหรับ idempotent ingest ที่ payload เปลี่ยน
+   - `is_deleted` (bool, default false) สำหรับรองรับ source ที่ยกเลิกรายการในอนาคต
+   - `updated_at` (timestamptz) เพื่อรองรับ merge/upsert รอบถัดไป
+6. นโยบายเวลา:
+   - เก็บ timestamp ใน DB เป็น UTC (`timestamptz`)
+   - ถ้ามาจาก timezone เฉพาะ (เช่น BKK) ให้แปลงก่อนเขียน และเก็บค่าเดิมลง `source_time_label` เมื่อต้อง debug
 
 ---
 
@@ -248,4 +264,4 @@ unique key:
 1. สร้าง Prisma schema จากตาราง `ingestion_runs`, `fred_*`, `calendar_events`, `mt5_*`
 2. ทำ migration v1 + seed ข้อมูลจากไฟล์ ref ชุดเล็กเพื่อทดสอบ unique key/upsert
 3. สร้าง data contract JSON schema ให้ตรง field ที่ออกแบบ
-4. เพิ่ม CME FedWatch หลังได้ sample จริงจาก pipeline ใหม่
+4. ทำ migration ของ CME FedWatch ตาม field จริงที่ตรวจจาก ref และทดสอบ parser สำหรับ `tables` (probabilities) + watchlist (quotes)
