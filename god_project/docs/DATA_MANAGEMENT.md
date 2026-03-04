@@ -105,3 +105,17 @@ manifest ควรมีข้อมูลอย่างน้อย:
 - แปลงลง normalized table ได้
 - ผ่าน quality checks ขั้นพื้นฐาน
 - เว็บสามารถอ่านผ่าน read model ได้
+
+
+## 11) ประเด็นที่ปรับจากการ review ล่าสุด
+1. **CME FedWatch ไม่ควรถูกมองว่าไม่มี sample แล้ว**
+   - ใน ref มีทั้ง `fedwatch_quotes` และ `fedwatch_probabilities` แล้ว
+   - ให้ใช้ field จริงจากไฟล์ตัวอย่างเป็นฐานของ contract/migration รอบแรก
+2. **เพิ่มมาตรฐาน lineage/soft-delete**
+   - แนะนำเพิ่ม `source_record_hash`, `updated_at`, `is_deleted` ใน fact tables เพื่อรองรับ incremental merge
+3. **บังคับนโยบายเวลาเป็น UTC ใน DB**
+   - source ที่เป็นเวลา BKK (เช่น Calendar/MT5) ต้องแปลงเป็น UTC ก่อนเขียนลงตาราง
+   - เก็บ source time label เดิมไว้สำหรับ debug ได้ตามความเหมาะสม
+4. **Manifest ควรรองรับ quality metrics ขั้นต่ำ**
+   - เพิ่ม `row_count`, `inserted_count`, `updated_count`, `error_count`, `duration_ms`
+   - เพื่อให้ dashboard ingestion เปรียบเทียบผลราย run ได้ง่าย
