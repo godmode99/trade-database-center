@@ -51,7 +51,7 @@ model IngestionRun {
   id              String          @id @default(uuid()) @db.Uuid
   source          IngestionSource
   mode            RunMode
-  startedAt       DateTime        @map("started_at") @db.Timestamptz(6)
+  startedAt       DateTime        @default(now()) @map("started_at") @db.Timestamptz(6)
   finishedAt      DateTime?       @map("finished_at") @db.Timestamptz(6)
   status          RunStatus
   triggerType     TriggerType     @map("trigger_type")
@@ -113,6 +113,7 @@ model FredObservation {
   @@unique([seriesId, observationDate, mode], map: "uq_fred_observations_series_date_mode")
   @@index([seriesId, observationDate(sort: Desc)], map: "idx_fred_observations_series_date")
   @@index([mode, observationDate(sort: Desc)], map: "idx_fred_observations_mode_date")
+  @@index([ingestionRunId], map: "idx_fred_observations_ingestion_run_id")
   @@map("fred_observations")
 }
 
@@ -149,6 +150,7 @@ model CalendarEvent {
   @@index([eventDatetimeBkk(sort: Desc)], map: "idx_calendar_events_event_datetime")
   @@index([currency, eventDatetimeBkk(sort: Desc)], map: "idx_calendar_events_currency_datetime")
   @@index([impactScore(sort: Desc), eventDatetimeBkk(sort: Desc)], map: "idx_calendar_events_impact_datetime")
+  @@index([ingestionRunId], map: "idx_calendar_events_ingestion_run_id")
   @@map("calendar_events")
 }
 
@@ -188,6 +190,7 @@ model Mt5Ohlcv {
 
   @@unique([symbolId, timeframe, candleTimeBkk], map: "uq_mt5_ohlcv_symbol_tf_candle")
   @@index([symbolId, timeframe, candleTimeBkk(sort: Desc)], map: "idx_mt5_ohlcv_symbol_tf_candle")
+  @@index([ingestionRunId], map: "idx_mt5_ohlcv_ingestion_run_id")
   @@map("mt5_ohlcv")
 }
 
@@ -228,6 +231,8 @@ model Mt5Feature {
   ingestionRun     IngestionRun  @relation(fields: [ingestionRunId], references: [id], onDelete: Restrict)
 
   @@unique([symbolId, timeframe, candleTimeBkk], map: "uq_mt5_features_symbol_tf_candle")
+  @@index([symbolId, timeframe, candleTimeBkk(sort: Desc)], map: "idx_mt5_features_symbol_tf_candle")
+  @@index([ingestionRunId], map: "idx_mt5_features_ingestion_run_id")
   @@map("mt5_features")
 }
 
@@ -247,7 +252,9 @@ model Mt5Summary {
   symbol           Mt5Symbol     @relation(fields: [symbolId], references: [id], onDelete: Restrict)
   ingestionRun     IngestionRun  @relation(fields: [ingestionRunId], references: [id], onDelete: Restrict)
 
+  @@unique([symbolId, mode, asof], map: "uq_mt5_summaries_symbol_mode_asof")
   @@index([symbolId, mode, asof(sort: Desc)], map: "idx_mt5_summaries_symbol_mode_asof")
+  @@index([ingestionRunId], map: "idx_mt5_summaries_ingestion_run_id")
   @@map("mt5_summaries")
 }
 
@@ -272,6 +279,8 @@ model FedwatchProbability {
   ingestionRun     IngestionRun       @relation(fields: [ingestionRunId], references: [id], onDelete: Restrict)
 
   @@unique([instrument, tableName, symbol, contractMonth, asofAt], map: "uq_fedwatch_probabilities_nk")
+  @@index([instrument, asofAt(sort: Desc)], map: "idx_fedwatch_probabilities_instrument_asof")
+  @@index([ingestionRunId], map: "idx_fedwatch_probabilities_ingestion_run_id")
   @@map("fedwatch_probabilities")
 }
 
@@ -301,5 +310,7 @@ model FedwatchQuote {
   ingestionRun     IngestionRun  @relation(fields: [ingestionRunId], references: [id], onDelete: Restrict)
 
   @@unique([symbol, mode, capturedAt], map: "uq_fedwatch_quotes_symbol_mode_captured")
+  @@index([mode, capturedAt(sort: Desc)], map: "idx_fedwatch_quotes_mode_captured")
+  @@index([ingestionRunId], map: "idx_fedwatch_quotes_ingestion_run_id")
   @@map("fedwatch_quotes")
 }
