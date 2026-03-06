@@ -3,7 +3,7 @@ output:
 
 pipeline:
   steps:
-    "01_save_session": false
+    "01_save_session": true
     "02_capture_document_html": true
     "03_extract_from_document": true
     "select_events": true

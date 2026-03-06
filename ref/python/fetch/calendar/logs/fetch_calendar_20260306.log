@@ -1,0 +1,22 @@
+2026-03-06 20:04:04,652 | INFO | === CALENDAR PIPELINE START ===
+2026-03-06 20:04:04,652 | INFO | RUN  01_save_session
+2026-03-06 20:04:04,653 | ERROR | Step failed: 01_save_session
+Traceback (most recent call last):
+  File "C:\Users\iidogpon\Documents\GitHub\trade-database-center\refจากโปรเจคเก่า\python\fetch\calendar\pipeline.py", line 211, in main
+    run_step(name)
+    ~~~~~~~~^^^^^^
+  File "C:\Users\iidogpon\Documents\GitHub\trade-database-center\refจากโปรเจคเก่า\python\fetch\calendar\pipeline.py", line 67, in run_step
+    raise FileNotFoundError(f"Missing step script: {script_path}")
+FileNotFoundError: Missing step script: C:\Users\iidogpon\Documents\GitHub\trade-database-center\refจากโปรเจคเก่า\python\fetch\calendar\01_save_session.py
+2026-03-06 20:04:04,655 | INFO | === CALENDAR PIPELINE END ===
+2026-03-06 20:04:38,116 | INFO | === CALENDAR PIPELINE START ===
+2026-03-06 20:04:38,117 | INFO | RUN  01_save_session
+2026-03-06 20:04:38,117 | ERROR | Step failed: 01_save_session
+Traceback (most recent call last):
+  File "C:\Users\iidogpon\Documents\GitHub\trade-database-center\ref\python\fetch\calendar\pipeline.py", line 211, in main
+    run_step(name)
+    ~~~~~~~~^^^^^^
+  File "C:\Users\iidogpon\Documents\GitHub\trade-database-center\ref\python\fetch\calendar\pipeline.py", line 67, in run_step
+    raise FileNotFoundError(f"Missing step script: {script_path}")
+FileNotFoundError: Missing step script: C:\Users\iidogpon\Documents\GitHub\trade-database-center\ref\python\fetch\calendar\01_save_session.py
+2026-03-06 20:04:38,119 | INFO | === CALENDAR PIPELINE END ===
